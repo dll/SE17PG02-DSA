@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h> 
 #include"DSAFunLib.h"
 #include"DSA00PF.h"
 
@@ -27,10 +28,14 @@ int main(int argc, char** argv) {
 				printf("getMax=%s\n",cc->studNo);
 
 				//测试3:float类型求最大值 3使用库函数getMax
-				float floatnums[] = { 3.14, 1.23, 5.20, 8.8, 2.17, 6.1888, 99, 2.56, 4.4 };
+				float floatnums[] = {3.14, 1.23, 5.20, 8.8, 2.17, 6.1888, 99, 2.56, 4.4};
 				float *pfMax = (float *)getMax(floatnums,sizeof(float),sizeof(floatnums)/sizeof(float), floatCmp, 0);//4使用用户定义的比较函数floatCmp
 				float fmax = *pfMax;
 				printf("getMax=%.4lf\n",fmax);
+				
+				qsort(floatnums,sizeof(floatnums)/sizeof(float),sizeof(float),qsortfCmp);
+				for(int i=0; i<sizeof(floatnums)/sizeof(float);i++)
+					printf("%.4lf ", floatnums[i]);
 
 			} else if(input == 'q') {
 				break;
@@ -54,5 +59,6 @@ getMax=9
 getMax=99
 getMax=se17
 getMax=99.0000
+1.2300 2.1700 2.5600 3.1400 4.4000 5.2000 6.1888 8.8000 99.0000
 
 */ 
